@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace LinqGH.LinqComponents
 {
-    public class First_TextInput : LinqComponentBase_TextInput
+    public class First_TextInput : LinqComponentBase
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -23,6 +23,11 @@ namespace LinqGH.LinqComponents
         protected override IEnumerable<object> Evaluate(IEnumerable<object> values, string lambdaExpression)
         {
             return new object[] { values.FirstDynamic(lambdaExpression) };
+        }
+
+        protected override IEnumerable<object> Evaluate(string expression, Dictionary<string, object[]> inputLists, int listLength)
+        {
+            throw new NotImplementedException();
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.IFirst;

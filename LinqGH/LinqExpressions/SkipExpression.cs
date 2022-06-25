@@ -10,7 +10,7 @@ namespace LinqGH.LinqExpressions
 {
     public class SkipExpression : GH_Component
     {
-        public SkipExpression() : base("SkipExpression", "SkipExpression", "Bypasses a specified number of elements in a sequence and then returns the remaining elements.", NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.Linq))
+        public SkipExpression() : base("SkipExpression", "SkipExpression", "Bypasses a specified number of elements in a sequence and then returns the remaining elements.", NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.Expressioni))
         {
         }
 

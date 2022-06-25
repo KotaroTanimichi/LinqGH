@@ -10,7 +10,7 @@ namespace LinqGH.LinqExpressions
 {
     public class TakeExpression : GH_Component
     {
-        public TakeExpression() : base("TakeExpression", "TakeExpression", "Returns a specified number of contiguous elements from the start of a sequence.", NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.Linq))
+        public TakeExpression() : base("TakeExpression", "TakeExpression", "Returns a specified number of contiguous elements from the start of a sequence.", NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.Expressioni))
         {
         }
 

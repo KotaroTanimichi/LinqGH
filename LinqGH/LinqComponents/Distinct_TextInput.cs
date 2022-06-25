@@ -18,7 +18,7 @@ namespace LinqGH.LinqComponents
         /// </summary>
         public Distinct_TextInput()
           : base("Distinct_TextInput", "Distinct_TextInput",
-            "Returns distinct elements from a sequence.", NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.LinqWithTextInput))
+            "Returns distinct elements from a sequence.", NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.Linq))
         {
         }
 

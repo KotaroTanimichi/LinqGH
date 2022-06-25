@@ -20,7 +20,7 @@ namespace LinqGH.LinqExpressions
         }
 
         protected LinqExpressionBase(string name, string nickname, string description, bool enableTextBox = true)
-            : base(name, nickname, description, NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.Linq), GH_ParamAccess.tree)
+            : base(name, nickname, description, NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.Expressioni), GH_ParamAccess.tree)
         {
             EnableTextBox = enableTextBox;
         }

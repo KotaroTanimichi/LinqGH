@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace LinqGH.LinqComponents
 {
-    public class All_TextInput : LinqComponentBase_TextInput
+    public class All : LinqComponentBase
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -14,15 +14,20 @@ namespace LinqGH.LinqComponents
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public All_TextInput()
-          : base("All_TextInput", "All_TextInput",
-            "Determines whether all elements of a sequence satisfy a condition. ex. \"x => x>0\"")
+        public All()
+          : base("All", "All",
+            "Determines whether all elements of a sequence satisfy a condition. ex. \"x>0\"")
         {
         }
 
         protected override IEnumerable<object> Evaluate(IEnumerable<object> values, string lambdaExpression)
         {
             return new object[] { values.AllDynamic(lambdaExpression) };
+        }
+
+        protected override IEnumerable<object> Evaluate(string expression, Dictionary<string, object[]> inputLists, int listLength)
+        {
+            return new object[] { Enumerable.Range(0, listLength).All(i => (bool)EvalHelper.Execute(expression, GetParameterDict(inputLists, i))) };
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.IAll;

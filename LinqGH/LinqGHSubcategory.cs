@@ -2,7 +2,7 @@
 {
     internal enum LinqGHSubcategory
     {
-        Linq = 0,
-        LinqWithTextInput = 1,
+        Expressioni = 0,
+        Linq = 1,
     }
 }

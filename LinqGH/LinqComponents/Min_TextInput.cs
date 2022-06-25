@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace LinqGH.LinqComponents
 {
-    public class Min_TextInput : LinqComponentBase_TextInput
+    public class Min_TextInput : LinqComponentBase
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -29,6 +29,11 @@ namespace LinqGH.LinqComponents
                 var converted = values.SelectDynamic(lambdaExpression).Cast<IComparable>();
                 return new object[] { converted.MinDynamic<object>() };
             }
+        }
+
+        protected override IEnumerable<object> Evaluate(string expression, Dictionary<string, object[]> inputLists, int listLength)
+        {
+            throw new NotImplementedException();
         }
 
         protected override System.Drawing.Bitmap Icon => Resources.IMin;
