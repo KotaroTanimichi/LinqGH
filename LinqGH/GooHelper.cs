@@ -5,7 +5,6 @@ using System.Linq;
 
 namespace LinqGH
 {
-
     internal static class GooHelper
     {
         internal static IEnumerable<object> ExtractValues(IEnumerable<IGH_Goo> goos)
