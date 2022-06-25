@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Linquornis.LinqComponents
+namespace LinqGH.LinqComponents
 {
     public class Where : LinqComponentBase
     {
@@ -16,7 +16,7 @@ namespace Linquornis.LinqComponents
         {
         }
 
-        public Where() : base("Where", "Where", "")
+        public Where() : base("Where", "Where", "Filters a sequence of values based on a predicate. ex. \"x => x>0\"")
         {
         }
 

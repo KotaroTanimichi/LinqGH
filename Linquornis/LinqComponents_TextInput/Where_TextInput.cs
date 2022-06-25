@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Linquornis.LinqComponents_TextInput
+namespace LinqGH.LinqComponents_TextInput
 {
     public class Where_TextInput : LinqComponentBase_TextInput
     {

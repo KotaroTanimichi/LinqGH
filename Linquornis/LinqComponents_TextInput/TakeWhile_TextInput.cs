@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LinqGH.LinqComponents_TextInput
 {
-    public class Select_TextInput : LinqComponentBase_TextInput
+    public class TakeWhile_TextInput : LinqComponentBase_TextInput
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -13,15 +13,15 @@ namespace LinqGH.LinqComponents_TextInput
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public Select_TextInput()
-          : base("Select_TextInput", "Select_TextInput",
+        public TakeWhile_TextInput()
+          : base("TakeWhile_TextInput", "TakeWhile_TextInput",
             "Description")
         {
         }
 
         protected override IEnumerable<object> Evaluate(IEnumerable<object> values, string lambdaExpression)
         {
-            return values.SelectDynamic(lambdaExpression);
+            return values.TakeWhileDynamic(lambdaExpression);
         }
 
         protected override System.Drawing.Bitmap Icon => null;
@@ -31,7 +31,7 @@ namespace LinqGH.LinqComponents_TextInput
         /// It is vital this Guid doesn't change otherwise old ghx files 
         /// that use the old ID will partially fail during loading.
         /// </summary>
-        public override Guid ComponentGuid => new Guid("89068685-2954-4FB9-84C2-548BE1D0EFB0");
+        public override Guid ComponentGuid => new Guid("b5046ed0-120e-4e63-ac2b-7c4024aa703c");
 
     }
 }

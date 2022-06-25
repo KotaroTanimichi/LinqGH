@@ -1,13 +1,9 @@
 ﻿using Grasshopper.Kernel;
-using Grasshopper.Kernel.Data;
-using Grasshopper.Kernel.Types;
-using Grasshopper.Kernel.Special;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Grasshopper;
 
-namespace Linquornis.LinqComponents
+namespace LinqGH.LinqComponents
 {
     public class Select : LinqComponentBase
     {
@@ -20,7 +16,7 @@ namespace Linquornis.LinqComponents
         {
         }
 
-        public Select() : base("Select", "Select", "")
+        public Select() : base("Select", "Select", "Projects each element of a sequence into a new form. ex. \"x => x.ToString()\"")
         {
         }
 

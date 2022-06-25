@@ -2,19 +2,17 @@
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Special;
 using Grasshopper.Kernel.Types;
-using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 
-namespace Linquornis.LinqComponents_TextInput
+namespace LinqGH.LinqComponents_TextInput
 {
     public abstract class LinqComponentBase_TextInput : GH_Component
     {
         public LinqComponentBase_TextInput(string name, string nickname, string description)
           : base(name, nickname,
             description,
-            "Linquornis", "Linq_TextInput")
+            NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.LinqWithTextInput))
         {
         }
         /// <summary>
@@ -74,7 +72,8 @@ namespace Linquornis.LinqComponents_TextInput
                 return;
             }
 
-            Message = $"{values.First().GetType().Name} => {result.First().GetType().Name}";
+            if (values.Any() && result.Any())
+                Message = $"{values.First().GetType().Name} => {result.First().GetType().Name}";
 
             DA.SetDataList(0, result);
         }

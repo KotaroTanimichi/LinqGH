@@ -1,17 +1,10 @@
 ﻿using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
-using Grasshopper.Kernel.Attributes;
-using Grasshopper.Kernel.Data;
-using Grasshopper.Kernel.Parameters;
-using System.Collections.Generic;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace Linquornis.LinqComponents
+namespace LinqGH.LinqComponents
 {
 
     public class LinqComponentAttributes : GH_Attributes<LinqComponentBase>
@@ -26,23 +19,24 @@ namespace Linquornis.LinqComponents
         {
             base.Layout();
 
-            var rec = Bounds;
-            rec.Height = 30;
-            rec.Width = 200;
-
-            Bounds = rec;
-
-            Owner.OnAttributesChanged();
+            if (Owner.EnableTextBox)
+            {
+                var rec = Bounds;
+                rec.Height = 35;
+                rec.Width = Math.Max(200, string.IsNullOrEmpty(Owner.LinqExpression) ? 0 : GH_FontServer.StringWidth(Owner.LinqExpression, GH_FontServer.Standard) + 100);
+                Bounds = rec;
+                Owner.OnAttributesChanged();
+            }
         }
 
         public override GH_ObjectResponse RespondToMouseDoubleClick(GH_Canvas sender, GH_CanvasMouseEvent e)
         {
-            if (Owner is LinqComponentBase component)
+            if (Owner.EnableTextBox)
             {
-                string initial = component.LinqExpression;
+                string initial = Owner.LinqExpression;
 
                 var matrix = sender.Viewport.XFormMatrix(GH_Viewport.GH_DisplayMatrix.CanvasToControl);
-                var field = new LinqTextField(component)
+                var field = new LinqTextField(Owner)
                 {
                     Bounds = GH_Convert.ToRectangle(Bounds)
                 };
@@ -56,7 +50,6 @@ namespace Linquornis.LinqComponents
 
         protected override void Render(GH_Canvas canvas, Graphics graphics, GH_CanvasChannel channel)
         {
-            var cmp = Owner as LinqComponentBase;
             switch (channel)
             {
                 case GH_CanvasChannel.Wires:
@@ -67,32 +60,50 @@ namespace Linquornis.LinqComponents
                     GH_CapsuleRenderEngine.RenderInputGrip(graphics, canvas.Viewport.Zoom, InputGrip, true);
                     GH_CapsuleRenderEngine.RenderOutputGrip(graphics, canvas.Viewport.Zoom, OutputGrip, true);
 
-
-                    GH_Palette gH_Palette = GH_CapsuleRenderEngine.GetImpliedPalette(Owner);
-                    if (gH_Palette == GH_Palette.Normal && !Owner.IsPreviewCapable)
-                    {
-                        gH_Palette = GH_Palette.Hidden;
-                    }
-                    GH_Capsule gH_Capsule = GH_Capsule.CreateCapsule(Bounds, gH_Palette);
-                    GH_PaletteStyle impliedStyle = GH_CapsuleRenderEngine.GetImpliedStyle(gH_Palette, Selected, Owner.Locked, Owner.Hidden);
-                    gH_Capsule.Render(graphics, impliedStyle);
-
-
+                    var cmpBound = Bounds;
+                    int offset = 3;
+                    int typeInfoOffset = 20;
                     StringFormat format = new StringFormat();
                     format.Alignment = StringAlignment.Center;
                     format.LineAlignment = StringAlignment.Center;
                     format.Trimming = StringTrimming.EllipsisCharacter;
 
-                    var b = Bounds;
-                    int offset = 3;
-                    var bb = new Rectangle((int)b.X + offset, (int)b.Y + offset, (int)b.Width - 2 * offset, (int)b.Height - 2 * offset);
-                    graphics.FillRectangle(Brushes.White, bb);
-                    graphics.DrawRectangle(new Pen(Brushes.Black), bb);
+                    if (Owner.EnableTextBox)
+                    {
+                        GH_Palette gH_Palette = GH_CapsuleRenderEngine.GetImpliedPalette(Owner);
+                        if (gH_Palette == GH_Palette.Normal && !Owner.IsPreviewCapable)
+                        {
+                            gH_Palette = GH_Palette.Hidden;
+                        }
+                        GH_Capsule gH_Capsule = GH_Capsule.CreateCapsule(Bounds, gH_Palette);
+                        GH_PaletteStyle impliedStyle = GH_CapsuleRenderEngine.GetImpliedStyle(gH_Palette, Selected, Owner.Locked, Owner.Hidden);
+                        gH_Capsule.Render(graphics, impliedStyle);
 
+                        // label
+                        var labelBound = new Rectangle((int)cmpBound.X + offset, (int)cmpBound.Y + offset, (int)cmpBound.Width - 2 * offset, (int)cmpBound.Height - 2 * offset - 20);
+                        graphics.DrawString(this.Owner.Name, GH_FontServer.Small, Brushes.Black, labelBound, format);
 
-                    var lc = Owner as LinqComponentBase;
-                    if (!string.IsNullOrEmpty(lc.LinqExpression))
-                        graphics.DrawString(lc.LinqExpression, GH_FontServer.Standard, Brushes.Black, b, format);
+                        // expression
+                        var expressionBound = new Rectangle((int)cmpBound.X + offset, (int)cmpBound.Y + offset + 12, (int)cmpBound.Width - 2 * offset, (int)cmpBound.Height - 2 * offset - 12);
+                        graphics.FillRectangle(Brushes.White, expressionBound);
+                        graphics.DrawRectangle(new Pen(Brushes.Black), expressionBound);
+                        if (!string.IsNullOrEmpty(Owner.LinqExpression))
+                            graphics.DrawString(Owner.LinqExpression, GH_FontServer.Standard, Brushes.Black, expressionBound, format);
+
+                        // type
+                        var typeInfoBound = new Rectangle((int)cmpBound.X + typeInfoOffset, (int)(cmpBound.Y - 8), (int)cmpBound.Width - 2 * typeInfoOffset, 8);
+                        graphics.FillRectangle(Brushes.Black, typeInfoBound);
+                        graphics.DrawString(this.Owner.TypeInfo, GH_FontServer.Small, Brushes.White, typeInfoBound, format);
+
+                    }
+                    else
+                    {
+                        base.Render(canvas, graphics, channel);
+                        // type
+                        var typeInfoBound = new Rectangle((int)cmpBound.X + typeInfoOffset, (int)(cmpBound.Y - 8), (int)cmpBound.Width - 2 * typeInfoOffset, 8);
+                        graphics.FillRectangle(Brushes.Black, typeInfoBound);
+                        graphics.DrawString(this.Owner.TypeInfo, GH_FontServer.Small, Brushes.White, typeInfoBound, format);
+                    }
                     break;
 
             }
@@ -101,6 +112,7 @@ namespace Linquornis.LinqComponents
         public override bool HasOutputGrip => true;
 
         public override bool TooltipEnabled => true;
+
     }
 
 }

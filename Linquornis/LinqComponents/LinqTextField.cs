@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Linquornis.LinqComponents
+namespace LinqGH.LinqComponents
 {
     internal class LinqTextField : Grasshopper.GUI.Base.GH_TextBoxInputBase
     {
