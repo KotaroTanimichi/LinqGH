@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class Distinct : LinqExpressionBase
+    public class DistinctExpression : LinqExpressionBase
     {
 
-        public Distinct(IGH_InstanceDescription tag) : base(tag)
+        public DistinctExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public Distinct(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public DistinctExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public Distinct() : base("Distinct", "Distinct", "Returns distinct elements from a sequence.", false)
+        public DistinctExpression() : base("DistinctExpression", "DistinctExpression", "Returns distinct elements from a sequence.", false)
         {
         }
 

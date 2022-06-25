@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class All : LinqExpressionBase
+    public class AllExpression : LinqExpressionBase
     {
 
-        public All(IGH_InstanceDescription tag) : base(tag)
+        public AllExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public All(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public AllExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public All() : base("All", "All", "Determines whether all elements of a sequence satisfy a condition. ex. \"x => x>0\"")
+        public AllExpression() : base("AllExpressioin", "AllExpression", "Determines whether all elements of a sequence satisfy a condition. ex. \"x => x>0\"")
         {
         }
 

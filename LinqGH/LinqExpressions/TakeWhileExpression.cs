@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class TakeWhile : LinqExpressionBase
+    public class TakeWhileExpression : LinqExpressionBase
     {
 
-        public TakeWhile(IGH_InstanceDescription tag) : base(tag)
+        public TakeWhileExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public TakeWhile(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public TakeWhileExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public TakeWhile() : base("TakeWhile", "TakeWhile", "Returns elements from a sequence as long as a specified condition is true, and then skips the remaining elements. ex. \"x => x>0\"")
+        public TakeWhileExpression() : base("TakeWhileExpression", "TakeWhileExpression", "Returns elements from a sequence as long as a specified condition is true, and then skips the remaining elements. ex. \"x => x>0\"")
         {
         }
 

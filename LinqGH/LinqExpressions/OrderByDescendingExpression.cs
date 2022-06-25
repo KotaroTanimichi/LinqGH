@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class OrderByDescending : LinqExpressionBase
+    public class OrderByDescendingExpression : LinqExpressionBase
     {
 
-        public OrderByDescending(IGH_InstanceDescription tag) : base(tag)
+        public OrderByDescendingExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public OrderByDescending(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public OrderByDescendingExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public OrderByDescending() : base("OrderByDescending", "OrderByDescending", "Sorts the elements of a sequence in descending order. ex. \"x => x*x\"")
+        public OrderByDescendingExpression() : base("OrderByDescendingExpression", "OrderByDescendingExpression", "Sorts the elements of a sequence in descending order. ex. \"x => x*x\"")
         {
         }
 

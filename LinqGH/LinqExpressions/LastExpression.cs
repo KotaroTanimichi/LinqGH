@@ -7,36 +7,38 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class Max : LinqExpressionBase
+    public class LastExpression : LinqExpressionBase
     {
 
-        public Max(IGH_InstanceDescription tag) : base(tag)
+        public LastExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public Max(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public LastExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public Max() : base("Max", "Max", "Returns the maximum value in a sequence of values. ex. \"x => x*x\"")
+        public LastExpression() : base("LastExpression", "LastExpression", "Returns the last element of a sequence. ex. \"x => x>0\"")
         {
         }
 
-        public override Guid ComponentGuid => new Guid("a04baf32-472c-4b57-86a0-35319dcd7631");
+        public override Guid ComponentGuid => new Guid("29891df0-2cad-4f96-9ad0-68216c8d490c");
 
         protected override IEnumerable<object> Evaluate(IEnumerable<object> values, string lambdaExpression)
         {
             if (string.IsNullOrEmpty(lambdaExpression))
-                return new object[] { values.Max() };
+            {
+                return new object[] { values.Last() };
+            }
             else
             {
                 var labels = EvalHelper.GetParameterLabelsFromExpression(lambdaExpression);
                 if (labels.Count() != 1) throw new Exception();
                 var label = labels.Single();
                 var code = EvalHelper.GetCodeFromExpression(lambdaExpression);
-                return new object[] { values.Max(value => EvalHelper.Execute(code, new Dictionary<string, object>() { { label, value } })) };
+                return new object[] { values.Last(value => (bool)EvalHelper.Execute(code, new Dictionary<string, object>() { { label, value } })) };
             }
         }
-        protected override Bitmap Icon => Resources.Max;
+        protected override Bitmap Icon => Resources.Last;
     }
 }

@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class SkipWhile : LinqExpressionBase
+    public class SkipWhileExpression : LinqExpressionBase
     {
 
-        public SkipWhile(IGH_InstanceDescription tag) : base(tag)
+        public SkipWhileExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public SkipWhile(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public SkipWhileExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public SkipWhile() : base("SkipWhile", "SkipWhile", "Bypasses elements in a sequence as long as a specified condition is true and then returns the remaining elements. ex. \"x => x>0\"")
+        public SkipWhileExpression() : base("SkipWhileExpression", "SkipWhileExpression", "Bypasses elements in a sequence as long as a specified condition is true and then returns the remaining elements. ex. \"x => x>0\"")
         {
         }
 

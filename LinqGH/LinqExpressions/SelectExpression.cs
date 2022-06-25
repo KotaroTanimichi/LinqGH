@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class Select : LinqExpressionBase
+    public class SelectExpression : LinqExpressionBase
     {
 
-        public Select(IGH_InstanceDescription tag) : base(tag)
+        public SelectExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public Select(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public SelectExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public Select() : base("Select", "Select", "Projects each element of a sequence into a new form. ex. \"x => x.ToString()\"")
+        public SelectExpression() : base("SelectExpression", "SelectExpression", "Projects each element of a sequence into a new form. ex. \"x => x.ToString()\"")
         {
         }
 

@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class Min : LinqExpressionBase
+    public class MinExpression : LinqExpressionBase
     {
 
-        public Min(IGH_InstanceDescription tag) : base(tag)
+        public MinExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public Min(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public MinExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public Min() : base("Min", "Min", "Returns the minimum value in a sequence of values. ex. \"x => x*x\"")
+        public MinExpression() : base("MinExpression", "MinExpression", "Returns the minimum value in a sequence of values. ex. \"x => x*x\"")
         {
         }
 

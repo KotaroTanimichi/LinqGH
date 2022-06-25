@@ -8,9 +8,9 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class Skip : GH_Component
+    public class SkipExpression : GH_Component
     {
-        public Skip() : base("Skip", "Skip", "Bypasses a specified number of elements in a sequence and then returns the remaining elements.", NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.Linq))
+        public SkipExpression() : base("SkipExpression", "SkipExpression", "Bypasses a specified number of elements in a sequence and then returns the remaining elements.", NameHelper.Category, NameHelper.Subcategory(LinqGHSubcategory.Linq))
         {
         }
 

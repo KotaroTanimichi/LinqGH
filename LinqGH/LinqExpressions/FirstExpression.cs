@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class First : LinqExpressionBase
+    public class FirstExpression : LinqExpressionBase
     {
 
-        public First(IGH_InstanceDescription tag) : base(tag)
+        public FirstExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public First(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public FirstExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public First() : base("First", "First", "Returns the first element of a sequence. ex. \"x => x>0\"")
+        public FirstExpression() : base("FirstExpression", "FirstExpression", "Returns the first element of a sequence. ex. \"x => x>0\"")
         {
         }
 

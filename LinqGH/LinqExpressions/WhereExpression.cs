@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class Where : LinqExpressionBase
+    public class WhereExpression : LinqExpressionBase
     {
 
-        public Where(IGH_InstanceDescription tag) : base(tag)
+        public WhereExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public Where(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public WhereExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public Where() : base("Where", "Where", "Filters a sequence of values based on a predicate. ex. \"x => x>0\"")
+        public WhereExpression() : base("WhereExpression", "WhereExpression", "Filters a sequence of values based on a predicate. ex. \"x => x>0\"")
         {
         }
 

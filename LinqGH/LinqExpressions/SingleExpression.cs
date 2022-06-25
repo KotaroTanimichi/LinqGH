@@ -7,18 +7,18 @@ using System.Linq;
 
 namespace LinqGH.LinqExpressions
 {
-    public class Single : LinqExpressionBase
+    public class SingleExpression : LinqExpressionBase
     {
 
-        public Single(IGH_InstanceDescription tag) : base(tag)
+        public SingleExpression(IGH_InstanceDescription tag) : base(tag)
         {
         }
 
-        public Single(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
+        public SingleExpression(IGH_InstanceDescription tag, GH_ParamAccess access) : base(tag, access)
         {
         }
 
-        public Single() : base("Single", "Single", "Returns a single, specific element of a sequence. ex. \"x => x>0\"")
+        public SingleExpression() : base("SingleExpression", "SingleExpression", "Returns a single, specific element of a sequence. ex. \"x => x>0\"")
         {
         }
 
